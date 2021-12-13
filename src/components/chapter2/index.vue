@@ -16,7 +16,7 @@ import LessonTwoOnetwo from './lesson2-12.vue'
 import LessonTwoForT from './lesson2-14.vue'
 
 export default {
-  name: 'lessonTwo',
+  name: 'chapterTwo',
   components: {
     // HelloWorld,
     // LessonTwoSix,

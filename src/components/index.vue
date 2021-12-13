@@ -1,18 +1,21 @@
 <template>
   <js-practice />
-  <!-- <lesson-two /> -->
-  <lesson-three />
+  <!-- <chapter-two /> -->
+  <chapter-three />
+  <chapter-four />
 </template>
 
 <script>
 import JsPractice from './JSpractice'
-// import LessonTwo from './lesson2'
-import LessonThree from './lesson3'
+// import ChapterTwo from './chapter2'
+import ChapterThree from './chapter3'
+import ChapterFour from './chapter4'
 export default {
   name: 'components',
   components: {
-    // LessonTwo,
-    LessonThree,
+    // ChapterTwo,
+    ChapterThree,
+    ChapterFour,
     JsPractice
   }
 }

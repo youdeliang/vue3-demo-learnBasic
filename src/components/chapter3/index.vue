@@ -65,7 +65,7 @@
 // import LessonTwlTwo from './lesson1202.vue'
 import LessonThir from './lesson13.vue'
 export default {
-  name: 'lessonThree',
+  name: 'chapterThree',
   data () {
     return {
       num: () => { console.log(123) },
