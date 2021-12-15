@@ -1,6 +1,10 @@
 <template>
   <div>
     <div>lesson7</div>
+    <div>
+      <div>{{name}}</div>
+      <input type="text" v-focus>
+    </div>
   </div>
 </template>
 
@@ -8,9 +12,13 @@
 
 <script>
 export default {
-  name: 'lessonOne',
+  name: 'lessonSeven',
+  inject: ['name'],
   setup () {
 
+  },
+  mounted () {
+    console.log('object :>> ', this.$sayhello)
   }
 }
 </script>

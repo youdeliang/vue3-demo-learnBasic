@@ -2,7 +2,7 @@
   <div>
     <div>lesson1</div>
     <div
-      v-pos="400"
+      v-pos:left="200"
       class="header"
     >
       <input
@@ -30,9 +30,9 @@ export default {
       }
     },
     pos: {
-      mounted (el,binding) {
+      mounted (el, binding) {
         console.log('binding :>> ', binding)
-        el.style.top = binding.value
+        el.style[binding.arg] = binding.value + 'px'
       }
     }
   }
