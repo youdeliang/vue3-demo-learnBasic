@@ -3,7 +3,8 @@
   <!-- <chapter-two /> -->
   <!-- <chapter-three /> -->
   <!-- <chapter-four /> -->
-  <chapter-five />
+  <!-- <chapter-five /> -->
+  <chapter-six></chapter-six>
 </template>
 
 <script>
@@ -11,7 +12,8 @@
 // import ChapterTwo from './chapter2'
 // import ChapterThree from './chapter3'
 // import ChapterFour from './chapter4'
-import ChapterFive from './chapter5'
+// import ChapterFive from './chapter5'
+import ChapterSix from './chapter6'
 export default {
   name: 'components',
   components: {
@@ -19,7 +21,8 @@ export default {
     // ChapterThree,
     // JsPractice,
     // ChapterFour,
-    ChapterFive
+    // ChapterFive,
+    ChapterSix
   }
 }
 </script>

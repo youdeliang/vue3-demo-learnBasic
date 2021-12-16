@@ -1,15 +1,15 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 // import Mixins from './mixins/common'
-import myPlugin from './plugin/common'
-import validatePlugin from './plugin/validate'
+// import myPlugin from './plugin/common'
+// import validatePlugin from './plugin/validate'
 
-// createApp(App).mount('#app')
+createApp(App).mount('#app')
 
 // // 插件
-createApp(App).use(myPlugin, {
-  name: 'nice to meet you'
-}).use(validatePlugin).mount('#app')
+// createApp(App).use(myPlugin, {
+//   name: 'nice to meet you'
+// }).use(validatePlugin).mount('#app')
 
 // 全局指令
 // createApp(App).directive('focus', {
