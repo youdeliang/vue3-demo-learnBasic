@@ -1,10 +1,13 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import router from './router'
+import store from './store' // 存储
 // import Mixins from './mixins/common'
 // import myPlugin from './plugin/common'
 // import validatePlugin from './plugin/validate'
 
-createApp(App).mount('#app')
+// 路由是指根据url的不同，展示不同页面
+createApp(App).use(router).use(store).mount('#app')
 
 // // 插件
 // createApp(App).use(myPlugin, {

@@ -1,15 +1,22 @@
 <template>
-  <Components />
+  <!-- <Components /> -->
+  <div>
+    <!-- router-link 是跳转路由的标签 -->
+    <router-link to='/'>home</router-link> |
+    <router-link to='/login'>login</router-link>
+  </div>
+  <!-- router-view负责展示当前路由对应的组件的内容 -->
+  <router-view></router-view>
 </template>
 
 <script>
-import Components from './components'
+// import Components from './components'
 
 export default {
-  name: 'App',
-  components: {
-    Components
-  }
+  name: 'App'
+  // components: {
+  //   Components
+  // }
 }
 </script>
 
