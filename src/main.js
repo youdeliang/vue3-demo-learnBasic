@@ -2,6 +2,8 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store' // 存储
+import 'normalize.css'
+import './style/index.scss'
 // import Mixins from './mixins/common'
 // import myPlugin from './plugin/common'
 // import validatePlugin from './plugin/validate'

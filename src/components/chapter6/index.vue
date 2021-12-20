@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import { provide } from 'vue'
 // import LessonOne from './lesson1.vue'
 // import LessonTwo from './lesson2.vue'
 // import LessonFour from './lesson4.vue'
@@ -41,7 +42,7 @@ export default {
     LessonTwl
   },
   setup () {
-
+    provide('name', 'dell')
   },
   methods: {
     handleChange () {
