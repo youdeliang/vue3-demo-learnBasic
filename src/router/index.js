@@ -1,19 +1,19 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
-import Home from '../views/Home/index'
-import Login from '../views/Login/index'
-import Register from '../views/Register'
-
 // router 的配置
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: () => import('../views/Home')
+  }, {
+    path: '/shop/:id',
+    name: 'Shop',
+    component: () => import('../views/Shop')
   }, {
     path: '/register',
     name: 'Register',
-    component: Register,
+    component: () => import('../views/Register'),
     beforeEnter (to, from, next) {
       const { isLogin } = localStorage
       !isLogin ? next() : next({ name: 'Home' })
@@ -24,8 +24,8 @@ const routes = [
     // 懒加载，异步加载路由，当访问此页面的时候才加载，其他页面不用加载。
     // 可以使首页加载快
     // 问题：跳转页面有点卡顿
-    // component: () => import('../views/login/Login')
-    component: Login,
+    component: () => import('../views/Login'),
+    // component: Login,
     // 从哪来回哪去,只有访问login页面之前执行
     beforeEnter (to, from, next) {
       const { isLogin } = localStorage

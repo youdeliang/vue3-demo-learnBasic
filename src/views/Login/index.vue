@@ -83,6 +83,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../style/viriables.scss';
 .wrapper {
   position: absolute;
   top: 50%;
@@ -118,10 +119,10 @@ export default {
   }
   &__login-btn {
     margin: 0.32rem 0.4rem 0.16rem 0.4rem;
-    background: #0091ff;
+    background: $btn-bgcolor;
     box-shadow: 0 0.04rem 0.08rem 0 rgba(0, 145, 155, 0.32);
     border-radius: 0.04rem;
-    color: #fff;
+    color: $bg-color;
     line-height: 0.48rem;
     text-align: center;
     font-size: 0.16rem;

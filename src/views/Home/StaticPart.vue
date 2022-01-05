@@ -7,7 +7,7 @@
   <!-- search -->
   <div class="search">
     <span class="iconfont">&#xe65c;</span>
-    <span class="search__text">山姆酒店</span>
+    <input class="search__text" placeholder="山脉酒店">
   </div>
   <!-- banner -->
   <div class="banner">
@@ -80,10 +80,11 @@ export default {
 }
 .search {
   margin-bottom: 0.12rem;
-  background: #f5f5f5;
-  color: #b7b7b7;
+  background: $search-bacolor;
+  color: $search-fontcolor;
   border-radius: 0.16rem;
   line-height: 0.32rem;
+  display: flex;
   .iconfont {
     padding: 0 0.08rem 0 0.16rem;
     font-size: 0.16rem;
@@ -92,7 +93,12 @@ export default {
   // 不知道为啥这里要加inline-block
   &__text {
     font-size: 0.14rem;
-    // display: inline-block;
+    display: inline-block;
+    outline: none;
+    border: none;
+    background: $search-bacolor;
+    width: 100%;
+     border-radius: 0.16rem;
   }
 }
 .banner {
