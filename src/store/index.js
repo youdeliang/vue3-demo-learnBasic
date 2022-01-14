@@ -18,7 +18,14 @@ import axios from 'axios'
 
 export default createStore({
   state: {
-    name: 'dell'
+    name: 'dell',
+    cardList: {
+      1: {
+        name: 122
+      }
+      // 第一层级是店铺信息
+      // 第二层是商品信息
+    }
   },
   mutations: {
     // 数据修改
@@ -29,6 +36,22 @@ export default createStore({
     },
     getData (state, data) {
       state.name = data.message
+    },
+    changeCardItemInfo (state, proxy) {
+      const { shopId, productId, item, number } = proxy
+      const { cardList } = state
+
+      let _shopId = cardList[shopId]
+      !_shopId && (_shopId = {})
+
+      let _productId = _shopId[productId]
+      !_productId && (_productId = item) && (item.count = 0)
+
+      item.count = item.count + number
+      item.count < 0 && (item.count = 0)
+
+      _shopId[productId] = item
+      cardList[shopId] = _shopId
     }
   },
   actions: {

@@ -19,6 +19,7 @@
       v-show="item.imgUrl"
     />
     <Content />
+    <Card />
   </div>
 </template>
 
@@ -28,6 +29,7 @@ import { useRouter, useRoute } from 'vue-router'
 import { get } from '../../utils/request'
 import ShopInfo from '../../components/shopInfo.vue'
 import Content from './Content.vue'
+import Card from './Card.vue'
 
 const useShopInfoEffect = () => {
   const route = useRoute()
@@ -53,7 +55,8 @@ export default {
   name: 'shop',
   components: {
     ShopInfo,
-    Content
+    Content,
+    Card
   },
   setup () {
     const { item, getItemData } = useShopInfoEffect()

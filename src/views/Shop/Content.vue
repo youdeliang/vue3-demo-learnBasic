@@ -28,9 +28,15 @@
           </div>
         </div>
         <div class="product__num">
-          <span class="product__num__minus">-</span>
-          9
-          <span class="product__num__add">+</span>
+          <span
+            class="product__num__minus"
+            @click="()=>changeCardItemInfo(shopId,item._id,item,-1)"
+          >-</span>
+          {{cardList?.[shopId]?.[item._id]?.count || 0}}
+          <span
+            class="product__num__add"
+            @click="()=>changeCardItemInfo(shopId,item._id,item,1)"
+          >+</span>
         </div>
       </div>
     </div>
@@ -39,55 +45,67 @@
 </template>
 
 <script>
-import { reactive, toRefs } from 'vue'
+import { reactive, toRefs, ref, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
+import { useStore } from 'vuex'
 import { get } from '../../utils/request'
 
-const useGetListEffect = () => {
-  const data = reactive({
-    list: [],
-    currentTab: 'all'
-  })
-  const route = useRoute()
-  const getList = async (tab) => {
-    const result = await get(`/api/shop/${route.params.id}/products`, { tab })
+const tabList = [{
+  name: '全部商品',
+  tab: 'all'
+}, {
+  name: '秒杀',
+  tab: 'secskill'
+}, {
+  name: '水果',
+  tab: 'fruit'
+}]
+
+// 与内容相关的逻辑
+const useContentEffect = (currentTab, shopId) => {
+  const data = reactive({ list: [] })
+  const getList = async () => {
+    const result = await get(`/api/shop/${shopId}/products`, { tab: currentTab.value })
     if (result?.errno === 0 && result?.data) {
       data.list = result.data
     }
   }
-  return { getList, data }
+  watchEffect(() => getList())
+  const { list } = toRefs(data)
+  return { list }
 }
-const useHandleTabEffect = () => {
+// 与tab相关的逻辑
+const useTabEffect = () => {
+  const currentTab = ref(tabList[0].tab)
   const handleTabClick = (tab) => {
-    data.currentTab = tab
-    getList(tab)
+    currentTab.value = tab
   }
 
-  return { handleTabClick }
+  return { handleTabClick, currentTab }
 }
+
+// 结算
+const useCardEffect = () => {
+  const store = useStore()
+  const { cardList } = toRefs(store.state)
+  const changeCardItemInfo = (shopId, productId, item, number) => {
+    store.commit('changeCardItemInfo', { shopId, productId, item, number })
+  }
+  return { cardList, changeCardItemInfo }
+}
+
 export default {
   name: 'content',
   setup () {
-    const data = reactive({
-      list: [],
-      currentTab: 'all'
-    })
-    const tabList = [{
-      name: '全部商品',
-      tab: 'all'
-    }, {
-      name: '秒杀',
-      tab: 'secskill'
-    }, {
-      name: '水果',
-      tab: 'fruit'
-    }]
-    const { getList, data } = useGetListEffect()
-    const { handleTabClick } = useHandleTabEffect(getList, data)
-    getList('all')
-    const { list, currentTab } = toRefs(data)
+    const route = useRoute()
+    const shopId = route.params.id
+    const { handleTabClick, currentTab } = useTabEffect()
+    const { list } = useContentEffect(currentTab, shopId)
+    const { cardList, changeCardItemInfo } = useCardEffect()
 
-    return { handleTabClick, list, tabList, currentTab }
+    return {
+      handleTabClick, changeCardItemInfo, list, tabList, currentTab, cardList, shopId
+    }
   }
 }
 </script>
